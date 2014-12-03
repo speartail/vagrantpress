@@ -14,7 +14,7 @@ Vagrant.configure('2') do |config|
     puppet.options = '--verbose --debug'
   end
 
-  config.vm.synced_folder '../wordpress/', '/vagrant/wordpress'
+  config.vm.synced_folder '../wordpress/public/', '/vagrant/wordpress'
 
   # Fix for slow external network connections
   config.vm.provider :virtualbox do |vb|
