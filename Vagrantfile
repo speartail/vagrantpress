@@ -7,6 +7,8 @@ Vagrant.configure('2') do |config|
 
   config.vm.network :forwarded_port, guest: 80, host: 8080
 
+  # config.vm.network :nat, { nic_type: 'virtio' }
+
   config.vm.provision :puppet do |puppet|
     puppet.manifests_path = 'puppet/manifests'
     puppet.module_path = 'puppet/modules'
@@ -15,6 +17,7 @@ Vagrant.configure('2') do |config|
   end
 
   config.vm.synced_folder '../wordpress/public/', '/vagrant/wordpress'
+  config.vm.synced_folder '../wordpress/', '/vagrant/tools'
 
   # Fix for slow external network connections
   config.vm.provider :virtualbox do |vb|
